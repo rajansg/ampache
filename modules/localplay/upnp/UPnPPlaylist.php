@@ -107,7 +107,7 @@ class UPnPPlaylist
     }
 
     /**
-     * @return |null
+     * @return null
      */
     public function NextItem()
     {

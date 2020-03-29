@@ -251,7 +251,7 @@ class Song_Preview extends database_object implements media, playable_item
     }
 
     /**
-     * @return |null
+     * @return null
      */
     public function get_parent()
     {
@@ -331,7 +331,7 @@ class Song_Preview extends database_object implements media, playable_item
     } // play_url
 
     /**
-     * @return |null
+     * @return null
      */
     public function stream()
     {

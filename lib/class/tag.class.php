@@ -815,7 +815,7 @@ class Tag extends database_object implements library_item
     }
 
     /**
-     * @return |null
+     * @return null
      */
     public function get_parent()
     {
