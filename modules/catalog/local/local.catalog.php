@@ -176,7 +176,7 @@ class Catalog_local extends Catalog
      * the catalog.
      * @param $catalog_id
      * @param array $data
-     * @return bool
+     * @return boolean
      */
     public static function create_type($catalog_id, $data)
     {
@@ -231,7 +231,7 @@ class Catalog_local extends Catalog
      * check id3 information against the db.
      * @param $path
      * @param $options
-     * @return bool
+     * @return boolean
      */
     public function add_files($path, $options)
     {
@@ -302,7 +302,7 @@ class Catalog_local extends Catalog
     /**
      * @param $full_file
      * @param $options
-     * @return bool
+     * @return boolean
      */
     public function add_file($full_file, $options)
     {
@@ -891,7 +891,7 @@ class Catalog_local extends Catalog
      * Checks the song to see if it's there already returns true if found, false if not
      * @param $full_file
      * @param string $gather_type
-     * @return bool
+     * @return boolean
      */
     public function check_local_mp3($full_file, $gather_type = '')
     {
