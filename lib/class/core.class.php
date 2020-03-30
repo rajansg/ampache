@@ -353,8 +353,6 @@ class Core
      * if it could not generate a cryptographically secure token.
      * @param int $length
      * @return bool|string
-     * @return bool|string
-     * @throws Exception
      * @throws Exception
      */
     public static function gen_secure_token($length)
@@ -445,7 +443,7 @@ class Core
      * get_filesize
      * Get a file size. This because filesize() doesn't work on 32-bit OS with files > 2GB
      * @param $filename
-     * @return bool|false|float|int|string
+     * @return integer
      */
     public static function get_filesize($filename)
     {

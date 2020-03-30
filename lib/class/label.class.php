@@ -146,7 +146,7 @@ class Label extends database_object implements library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_default_art_kind()
     {
@@ -154,7 +154,7 @@ class Label extends database_object implements library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_description()
     {
@@ -212,7 +212,7 @@ class Label extends database_object implements library_item
     }
 
     /**
-     * @return int|mixed
+     * @return integer
      */
     public function get_user_owner()
     {
@@ -329,7 +329,7 @@ class Label extends database_object implements library_item
     /**
      * @param array $data
      * @param int $id
-     * @return int|mixed
+     * @return integer
      */
     public static function lookup(array $data, $id = 0)
     {

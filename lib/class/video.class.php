@@ -407,7 +407,7 @@ class Video extends database_object implements media, library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_description()
     {

@@ -153,7 +153,7 @@ class JSON_Data
      *
      * @param Song $song
      * @param array $playlist_data
-     * @return mixed|string
+     * @return string
      */
     private static function playlist_song_tracks_string($song, $playlist_data)
     {

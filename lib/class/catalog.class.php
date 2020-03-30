@@ -1605,7 +1605,7 @@ abstract class Catalog extends database_object
      * @param string $type
      * @param int $object_id
      * @param boolean $api
-     * @return int|mixed
+     * @return integer
      */
     public static function update_single_item($type, $object_id, $api = false)
     {
@@ -2555,7 +2555,7 @@ abstract class Catalog extends database_object
 
     /**
      * @param $libitem
-     * @param null $user
+     * @param User|null $user
      * @return boolean
      */
     public static function can_remove($libitem, $user = null)

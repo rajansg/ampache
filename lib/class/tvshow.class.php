@@ -280,7 +280,7 @@ class TVShow extends database_object implements library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_default_art_kind()
     {
@@ -315,7 +315,7 @@ class TVShow extends database_object implements library_item
      * @param $year
      * @param $tvshow_summary
      * @param boolean $readonly
-     * @return int|mixed|string|null
+     * @return integer|string|null
      */
     public static function check($name, $year, $tvshow_summary, $readonly = false)
     {
@@ -368,7 +368,7 @@ class TVShow extends database_object implements library_item
      * update
      * This takes a key'd array of data and updates the current tv show
      * @param array $data
-     * @return int|mixed|string|null
+     * @return integer|string|null
      */
     public function update(array $data)
     {

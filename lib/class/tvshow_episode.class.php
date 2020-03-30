@@ -225,7 +225,7 @@ class TVShow_Episode extends Video
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_description()
     {

@@ -140,7 +140,7 @@ class Session
      *
      * This takes a key and returns the data from the database.
      * @param $key
-     * @return mixed|string
+     * @return string
      */
     public static function read($key)
     {
@@ -153,7 +153,7 @@ class Session
      * This returns the specified column from the session row.
      * @param $key
      * @param string $column
-     * @return mixed|string
+     * @return string
      */
     private static function _read($key, $column)
     {
@@ -187,7 +187,7 @@ class Session
      *
      * This returns the agent associated with a session ID, if any
      * @param $key
-     * @return mixed|string
+     * @return string
      */
     public static function agent($key)
     {

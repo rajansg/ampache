@@ -523,7 +523,7 @@ class Playlist extends playlist_object
      * @param string $type
      * @param int $user_id
      * @param int $date
-     * @return mixed|string|null
+     * @return string|null
      */
     public static function create($name, $type, $user_id = null, $date = null)
     {

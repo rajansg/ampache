@@ -245,7 +245,7 @@ class TVShow_Season extends database_object implements library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_default_art_kind()
     {

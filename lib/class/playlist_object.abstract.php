@@ -176,7 +176,7 @@ abstract class playlist_object extends database_object implements library_item
     }
 
     /**
-     * @return int|mixed
+     * @return integer
      */
     public function get_user_owner()
     {
@@ -184,7 +184,7 @@ abstract class playlist_object extends database_object implements library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_default_art_kind()
     {

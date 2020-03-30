@@ -234,7 +234,7 @@ class Podcast_Episode extends database_object implements media, library_item
     }
 
     /**
-     * @return mixed|string
+     * @return string
      */
     public function get_default_art_kind()
     {
