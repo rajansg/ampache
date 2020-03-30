@@ -173,6 +173,7 @@ function charset_directory_correct($path) {
  * This just takes a source / dest and does the renaming
  * @param string $full_file
  * @param string $translated_filename
+ * @return boolean
  */
 function charset_rename_file($full_file, $translated_filename) {
 
