@@ -873,7 +873,7 @@ class User extends database_object
      * update_access
      * updates their access level
      * @param $new_access
-     * @return boolean
+     * @return false|null
      */
     public function update_access($new_access)
     {
@@ -1021,7 +1021,7 @@ class User extends database_object
      * @param string $city
      * @param boolean $disabled
      * @param boolean $encrypted
-     * @return bool|string|null
+     * @return string|null
      */
     public static function create($username, $fullname, $email, $website, $password, $access, $state = '', $city = '', $disabled = false, $encrypted = false)
     {
@@ -1065,7 +1065,7 @@ class User extends database_object
         $db_results = Dba::write($sql, $params);
 
         if (!$db_results) {
-            return false;
+            return null;
         }
 
         // Get the insert_id

@@ -1116,7 +1116,7 @@ class XML_Data
     /**
      * @param library_item $libitem
      * @param boolean $user_id
-     * @return mixed|string
+     * @return string|false
      */
     public static function podcast(library_item $libitem, $user_id = false)
     {
