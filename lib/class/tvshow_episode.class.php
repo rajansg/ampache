@@ -151,7 +151,7 @@ class TVShow_Episode extends Video
     /**
      * format
      * this function takes the object and reformats some values
-     * @param boolean$details
+     * @param boolean $details
      * @return boolean
      */
     public function format($details = true)
@@ -240,7 +240,7 @@ class TVShow_Episode extends Video
 
     /**
      * @param int $thumb
-     * @param boolean$force
+     * @param boolean $force
      * @return mixed|void
      */
     public function display_art($thumb = 2, $force = false)

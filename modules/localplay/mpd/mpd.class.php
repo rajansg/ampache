@@ -294,7 +294,7 @@ class mpd
      * above).
      * @param $command
      * @param null $arguments
-     * @param boolean$refresh_info
+     * @param boolean $refresh_info
      * @return bool|string
      */
     public function SendCommand($command, $arguments = null, $refresh_info = true)

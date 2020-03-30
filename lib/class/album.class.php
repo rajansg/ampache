@@ -722,7 +722,7 @@ class Album extends database_object implements library_item
      * This is the format function for this object. It sets cleaned up
      * album information with the base required
      * f_link, f_name
-     * @param boolean$details
+     * @param boolean $details
      * @param string $limit_threshold
      */
     public function format($details = true, $limit_threshold = '')
@@ -1104,7 +1104,7 @@ class Album extends database_object implements library_item
      * @param boolean $override_childs
      * @param boolean $add_to_childs
      * @param integer|null $current_id
-     * @param boolean$force_update
+     * @param boolean $force_update
      */
     public function update_tags($tags_comma, $override_childs, $add_to_childs, $current_id = null, $force_update = false)
     {

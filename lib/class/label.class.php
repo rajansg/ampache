@@ -98,7 +98,7 @@ class Label extends database_object implements library_item
 
     /**
      * @param $thumb
-     * @param boolean$force
+     * @param boolean $force
      * @return mixed|void
      */
     public function display_art($thumb, $force = false)
@@ -109,7 +109,7 @@ class Label extends database_object implements library_item
     }
 
     /**
-     * @param boolean$details
+     * @param boolean $details
      */
     public function format($details = true)
     {
@@ -481,7 +481,7 @@ class Label extends database_object implements library_item
      * get_display
      * This returns a csv formated version of the labels that we are given
      * @param $labels
-     * @param boolean$link
+     * @param boolean $link
      * @return string
      */
     public static function get_display($labels, $link = false)

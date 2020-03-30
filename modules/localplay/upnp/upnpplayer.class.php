@@ -157,7 +157,7 @@ class UPnPPlayer
     /**
      * next
      * go to next song
-     * @param boolean$forcePlay
+     * @param boolean $forcePlay
      * @return boolean
      */
     public function Next($forcePlay = true)

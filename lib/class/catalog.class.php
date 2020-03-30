@@ -1252,7 +1252,7 @@ abstract class Catalog extends database_object
      * @param string $type
      * @param int $id
      * @param boolean $db_art_first
-     * @param boolean$api
+     * @param boolean $api
      * @return boolean
      */
     public static function gather_art_item($type, $id, $db_art_first = false, $api = false)
@@ -1604,7 +1604,7 @@ abstract class Catalog extends database_object
      * this can be done by 75+
      * @param string $type
      * @param int $object_id
-     * @param boolean$api
+     * @param boolean $api
      * @return int|mixed
      */
     public static function update_single_item($type, $object_id, $api = false)

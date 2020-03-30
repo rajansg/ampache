@@ -387,7 +387,7 @@ class User extends database_object
      * []['prefs'] = array(array('name', 'display', 'value'));
      * []['admin'] = t/f value if this is an admin only section
      * @param int $type
-     * @param boolean$system
+     * @param boolean $system
      * @return array
      */
     public function get_preferences($type = 0, $system = false)
@@ -1019,8 +1019,8 @@ class User extends database_object
      * @param int $access
      * @param string $state
      * @param string $city
-     * @param boolean$disabled
-     * @param boolean$encrypted
+     * @param boolean $disabled
+     * @param boolean $encrypted
      * @return bool|string|null
      */
     public static function create($username, $fullname, $email, $website, $password, $access, $state = '', $city = '', $disabled = false, $encrypted = false)
@@ -1108,7 +1108,7 @@ class User extends database_object
      * This function sets up the extra variables we need when we are displaying a
      * user for an admin, these should not be normally called when creating a
      * user object
-     * @param boolean$details
+     * @param boolean $details
      */
     public function format($details = true)
     {
@@ -1447,7 +1447,7 @@ class User extends database_object
     /**
      * get_avatar
      * Get the user avatar
-     * @param boolean$local
+     * @param boolean $local
      * @param array $session
      * @return array
      */

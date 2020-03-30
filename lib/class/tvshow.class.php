@@ -169,7 +169,7 @@ class TVShow extends database_object implements library_item
     /**
      * format
      * this function takes the object and reformats some values
-     * @param boolean$details
+     * @param boolean $details
      * @return boolean
      */
     public function format($details = true)
@@ -297,7 +297,7 @@ class TVShow extends database_object implements library_item
 
     /**
      * @param int $thumb
-     * @param boolean$force
+     * @param boolean $force
      * @return mixed|void
      */
     public function display_art($thumb = 2, $force = false)
@@ -314,7 +314,7 @@ class TVShow extends database_object implements library_item
      * @param $name
      * @param $year
      * @param $tvshow_summary
-     * @param boolean$readonly
+     * @param boolean $readonly
      * @return int|mixed|string|null
      */
     public static function check($name, $year, $tvshow_summary, $readonly = false)
@@ -438,7 +438,7 @@ class TVShow extends database_object implements library_item
      * @param boolean $override_childs
      * @param boolean $add_to_childs
      * @param int $current_id
-     * @param boolean$force_update
+     * @param boolean $force_update
      */
     public function update_tags($tags_comma, $override_childs, $add_to_childs, $current_id = null, $force_update = false)
     {

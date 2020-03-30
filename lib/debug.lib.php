@@ -413,7 +413,7 @@ function debug_result($status = false, $value = null, $comment = '')
  * debug_wresult
  *
  * Convenience function to format the output.
- * @param boolean$status
+ * @param boolean $status
  * @param string $value
  * @param string $comment
  * @return string

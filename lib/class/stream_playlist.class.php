@@ -272,7 +272,7 @@ class Stream_Playlist
 
     /**
      * @param $type
-     * @param boolean$redirect
+     * @param boolean $redirect
      * @return boolean
      */
     public function generate_playlist($type, $redirect = false)

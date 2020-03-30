@@ -446,7 +446,7 @@ class OAuthRequest
     /**
      * @param $name
      * @param $value
-     * @param boolean$allow_duplicates
+     * @param boolean $allow_duplicates
      */
     public function set_parameter($name, $value, $allow_duplicates = true)
     {
@@ -1066,7 +1066,7 @@ class OAuthUtil
     //                  see http://code.google.com/p/oauth/issues/detail?id=163
     /**
      * @param $header
-     * @param boolean$only_allow_oauth_parameters
+     * @param boolean $only_allow_oauth_parameters
      * @return array
      */
     public static function split_header($header, $only_allow_oauth_parameters = true)

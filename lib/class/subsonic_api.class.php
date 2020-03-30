@@ -44,7 +44,7 @@ class Subsonic_Api
      * check_parameter
      * @param array $input
      * @param string $parameter
-     * @param boolean$addheader
+     * @param boolean $addheader
      * @return bool|mixed
      */
     public static function check_parameter($input, $parameter, $addheader = false)

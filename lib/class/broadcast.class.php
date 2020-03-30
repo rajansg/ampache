@@ -178,7 +178,7 @@ class Broadcast extends database_object implements library_item
     }
 
     /**
-     * @param boolean$details
+     * @param boolean $details
      */
     public function format($details = true)
     {
@@ -296,7 +296,7 @@ class Broadcast extends database_object implements library_item
 
     /**
      * @param int $thumb
-     * @param boolean$force
+     * @param boolean $force
      * @return mixed|void
      */
     public function display_art($thumb = 2, $force = false)
