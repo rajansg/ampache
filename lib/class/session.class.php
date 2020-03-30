@@ -118,6 +118,7 @@ class Session
      */
     public static function garbage_collection()
     {
+        debug_event('session.class', 'Session cleanup started', 4);
         $sql = 'DELETE FROM `session` WHERE `expire` < ?';
         Dba::write($sql, array(time()));
 
@@ -129,7 +130,8 @@ class Session
         Tmp_Playlist::garbage_collection();
         Stream_Playlist::garbage_collection();
         Song_Preview::garbage_collection();
-
+        debug_event('session.class', 'Session cleanup ended', 4);
+        
         return true;
     }
 

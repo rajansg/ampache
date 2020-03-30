@@ -232,7 +232,7 @@ function sort_move_file($song, $fullname, $test_mode) {
                 echo "\n";
             }
             else {
-                debug_event('sort_files.inc', "Creating $path directory", 4);
+                debug_event('sort_files', "Creating $path directory", 4);
                 $results = mkdir($path);
                 if (!$results) {
                     /* HINT: Directory (File path) */
@@ -259,7 +259,7 @@ function sort_move_file($song, $fullname, $test_mode) {
 
         /* Check for file existence */
         if (file_exists($fullname)) {
-            debug_event('sort_files.inc', 'Error: $fullname already exists', 1);
+            debug_event('sort_files', 'Error: $fullname already exists', 1);
             /* HINT: filename (File path) */
             printf (T_("Don't overwrite an existing file: %s"), $fullname);
             echo "\n";
@@ -267,7 +267,7 @@ function sort_move_file($song, $fullname, $test_mode) {
         }
 
         $results = copy($song->file, $fullname);
-        debug_event('sort_files.inc', 'Copied ' . $song->file . ' to ' . $fullname, 4);
+        debug_event('sort_files', 'Copied ' . $song->file . ' to ' . $fullname, 4);
 
         /* Look for the folder art and copy that as well */
         if (!AmpConfig::get('album_art_preferred_filename') || strstr(AmpConfig::get('album_art_preferred_filename'), "%")) {
@@ -279,7 +279,7 @@ function sort_move_file($song, $fullname, $test_mode) {
             $old_art     = $old_dir . DIRECTORY_SEPARATOR . sort_clean_name(AmpConfig::get('album_art_preferred_filename'));
         }
 
-        debug_event('sort_files.inc', 'Copied ' . $old_art . ' to ' . $folder_art, 4);
+        debug_event('sort_files', 'Copied ' . $old_art . ' to ' . $folder_art, 4);
         if (copy($old_art, $folder_art) === false) {
             throw new \RuntimeException('Unable to copy ' . $old_art . ' to ' . $folder_art);
         }
