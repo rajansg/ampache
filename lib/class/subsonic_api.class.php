@@ -956,7 +956,7 @@ class Subsonic_Api
      * @param $name
      * @param array $songsIdToAdd
      * @param array $songIndexToRemove
-     * @param boolean$public
+     * @param boolean $public
      */
     private static function _updatePlaylist($id, $name, $songsIdToAdd = array(), $songIndexToRemove = array(), $public = true)
     {

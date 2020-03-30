@@ -120,7 +120,7 @@ trait Metadata
     /**
      *
      * @param string $name
-     * @param boolean$public
+     * @param boolean $public
      * @return MetadataField
      * @throws \ReflectionException
      */

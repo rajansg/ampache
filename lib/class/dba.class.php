@@ -339,9 +339,9 @@ class Dba
 
     /**
      * _setup_dbh
-     * @param $dbh
+     * @param null|PDO $dbh
      * @param string $database
-     * @return boolean
+     * @return false|null
      */
     private static function _setup_dbh($dbh, $database)
     {
@@ -463,7 +463,7 @@ class Dba
      *
      * This nukes the dbh connection, this isn't used very often...
      * @param string $database
-     * @return true
+     * @return boolean
      */
     public static function disconnect($database = '')
     {
