@@ -1660,9 +1660,6 @@ abstract class Catalog extends database_object
         if (!$api) {
             echo "</tbody></table>\n";
         }
-        // Cleanup old objects that are no longer needed
-        Album::garbage_collection();
-        Artist::garbage_collection();
 
         return $result;
     } // update_single_item
@@ -2692,9 +2689,6 @@ abstract class Catalog extends database_object
                 }
                 break;
         }
-
-        // Remove any orphaned artists/albums/etc.
-        self::garbage_collection();
     }
 
     /**

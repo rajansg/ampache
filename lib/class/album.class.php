@@ -1041,7 +1041,6 @@ class Album extends database_object implements library_item
             Userflag::migrate('album', $this->id, $album_id);
             Rating::migrate('album', $this->id, $album_id);
             Art::migrate('album', $this->id, $album_id);
-            self::garbage_collection();
         } else {
             if (!empty($year) && $year != $this->year) {
                 self::update_field('year', $year, $album_id);
@@ -1077,10 +1076,6 @@ class Album extends database_object implements library_item
             foreach ($songs as $song_id) {
                 Song::update_utime($song_id);
             } // foreach song of album
-            Stats::garbage_collection();
-            Rating::garbage_collection();
-            Userflag::garbage_collection();
-            Useractivity::garbage_collection();
         } // if updated
 
         $override_childs = false;
