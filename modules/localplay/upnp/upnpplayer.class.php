@@ -436,4 +436,3 @@ class UPnPPlayer
         debug_event('upnpplayer.class', 'ReadIndState:' . $this->_intState, 5);
     }
 } // End UPnPPlayer Class
-;

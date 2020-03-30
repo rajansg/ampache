@@ -239,12 +239,9 @@ function charset_rename_file($full_file, $translated_filename) {
  * once I figure it out, it'll clean other stuff
  */
 function charset_clean_name($string) {
+    /* First remove any / or \ chars */
+    $string_1 = preg_replace('/[\/\\\]/','-',$string);
+    $string_2 = str_replace(':',' ',$string_1);
 
-        /* First remove any / or \ chars */
-        $string_1 = preg_replace('/[\/\\\]/','-',$string);
-        $string_2 = str_replace(':',' ',$string_1);
-        $string_3 = preg_replace('/[\!\:\*]/','_',$string_2);
-
-        return $string_3;
-
+    return preg_replace('/[\!\:\*]/','_',$string_2);
 } // charset_clean_name

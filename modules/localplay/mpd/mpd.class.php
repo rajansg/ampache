@@ -1155,4 +1155,3 @@ class mpd
         }
     }
 }   // end class mpd
-;
