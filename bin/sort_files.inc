@@ -116,6 +116,10 @@ while ($row = Dba::fetch_row($db_results)) {
  * sort_find_home
  * Get the directory for this file from the catalog and the song info using the sort_pattern
  * takes into account various artists and the alphabet_prefix
+ * @param $song
+ * @param $sort_pattern
+ * @param null $base
+ * @return bool|string
  */
 function sort_find_home($song, $sort_pattern, $base = null) {
 
@@ -184,6 +188,8 @@ function sort_find_home($song, $sort_pattern, $base = null) {
  * This is run on every individual element of the search
  * Before it is put together, this removes / and \ and also
  * once I figure it out, it'll clean other stuff
+ * @param $string
+ * @return string|string[]|null
  */
 function sort_clean_name($string) {
 
@@ -205,6 +211,10 @@ function sort_clean_name($string) {
  * sure that the directories exist, once the dirs exist then we do a copy
  * and unlink.. This is a little unsafe, and as such it verifies the copy
  * worked by doing a filesize() before unlinking.
+ * @param $song
+ * @param $fullname
+ * @param $test_mode
+ * @return bool
  */
 function sort_move_file($song, $fullname, $test_mode) {
 

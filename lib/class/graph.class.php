@@ -140,7 +140,7 @@ class Graph
      * @param integer $start_date
      * @param integer $end_date
      * @param string $zoom
-     * @return
+     * @return array
      */
     protected function get_all_type_pts($fct, $id = 0, $object_type = null, $object_id = 0, $start_date = null, $end_date = null, $zoom = 'day')
     {
@@ -178,7 +178,7 @@ class Graph
      * @param integer $end_date
      * @param string $zoom
      * @param boolean $show_total
-     * @return
+     * @return array
      */
     protected function get_all_pts($fct, CpChart\Chart\Data $MyData, $user_id = 0, $object_type = null, $object_id = 0, $start_date = null, $end_date = null, $zoom = 'day', $show_total = true)
     {

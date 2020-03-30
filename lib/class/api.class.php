@@ -76,7 +76,7 @@ class Api
      * internally.
      * @param string $filter
      * @param integer|string|boolean|null $value
-     * @return false|null
+     * @return boolean
      */
     public static function set_filter($filter, $value)
     {
@@ -131,7 +131,7 @@ class Api
      * @param array $input
      * @param string[] $parameters e.g. array('auth','type')
      * @param string $method
-     * @return false|null
+     * @return boolean
      */
     private static function check_parameter($input, $parameters, $method = '')
     {
@@ -431,7 +431,7 @@ class Api
      *
      * @param array $input
      * auth = (string))
-     * @return false|null
+     * @return boolean
      */
     public static function goodbye($input)
     {
@@ -464,6 +464,8 @@ class Api
             default:
                 echo XML_Data::error('400', 'failed to end session: ' . $input['auth']);
         }
+
+        return false;
     } // goodbye
 
     /**
@@ -474,7 +476,7 @@ class Api
      *
      * @param array $input
      * url = (string) $url
-     * @return false|null
+     * @return boolean
      */
     public static function url_to_song($input)
     {
@@ -492,6 +494,8 @@ class Api
             default:
                 echo XML_Data::songs(array($data['id']), array(), true, $user->id);
         }
+
+        return true;
     }
 
     /**
@@ -507,7 +511,7 @@ class Api
      * update = self::set_filter(date) //optional
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function get_indexes($input)
     {
@@ -526,7 +530,7 @@ class Api
                     echo XML_Data::error('401', T_('Wrong object type ' . $type));
             }
 
-            return;
+            return false;
         }
         self::$browse->reset_filters();
         self::$browse->set_type($type);
@@ -559,6 +563,8 @@ class Api
                 echo XML_Data::indexes($objects, $type);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // get_indexes
 
     /**
@@ -689,7 +695,7 @@ class Api
      * @param array $input
      * filter  = (string) Alpha-numeric search term
      * include = (array) 'albums'|'songs' //optional
-     * @return false|null
+     * @return boolean
      */
     public static function artist($input)
     {
@@ -706,6 +712,8 @@ class Api
                 echo XML_Data::artists(array($uid), $input['include'], true, $user->id);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // artist
 
     /**
@@ -718,7 +726,7 @@ class Api
      * filter = (string) UID of artist
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function artist_albums($input)
     {
@@ -741,6 +749,8 @@ class Api
                 echo XML_Data::albums($albums, array(), true, $user->id);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // artist_albums
 
     /**
@@ -753,7 +763,7 @@ class Api
      * filter = (string) UID of Artist
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function artist_songs($input)
     {
@@ -779,6 +789,8 @@ class Api
             }
         }
         Session::extend($input['auth']);
+
+        return true;
     } // artist_songs
 
     /**
@@ -833,7 +845,7 @@ class Api
      * @param array $input
      * filter  = (string) UID of Album
      * include = (array) 'songs' //optional
-     * @return false|null
+     * @return boolean
      */
     public static function album($input)
     {
@@ -850,6 +862,8 @@ class Api
                 echo XML_Data::albums(array($uid), $input['include'], true, $user->id);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // album
 
     /**
@@ -862,7 +876,7 @@ class Api
      * filter = (string) UID of Album
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function album_songs($input)
     {
@@ -907,6 +921,8 @@ class Api
             }
         }
         Session::extend($input['auth']);
+
+        return true;
     } // album_songs
 
     /**
@@ -954,7 +970,7 @@ class Api
      *
      * @param array $input
      * filter = (string) UID of Tag
-     * @return false|null
+     * @return boolean
      */
     public static function tag($input)
     {
@@ -971,6 +987,8 @@ class Api
                 echo XML_Data::tags(array($uid));
         }
         Session::extend($input['auth']);
+
+        return true;
     } // tag
 
     /**
@@ -983,7 +1001,7 @@ class Api
      * filter = (string) UID of Album
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function tag_artists($input)
     {
@@ -1008,6 +1026,8 @@ class Api
             }
         }
         Session::extend($input['auth']);
+
+        return true;
     } // tag_artists
 
     /**
@@ -1020,7 +1040,7 @@ class Api
      * filter = (string) UID of Tag
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function tag_albums($input)
     {
@@ -1047,6 +1067,8 @@ class Api
             }
         }
         Session::extend($input['auth']);
+
+        return true;
     } // tag_albums
 
     /**
@@ -1059,7 +1081,7 @@ class Api
      * filter = (string) UID of Tag
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function tag_songs($input)
     {
@@ -1087,6 +1109,8 @@ class Api
             }
         }
         Session::extend($input['auth']);
+
+        return true;
     } // tag_songs
 
     /**
@@ -1146,7 +1170,7 @@ class Api
      *
      * @param array $input
      * filter = (string) UID of song
-     * @return false|null
+     * @return boolean
      */
     public static function song($input)
     {
@@ -1165,6 +1189,8 @@ class Api
                 echo XML_Data::songs(array((int) $song_id), array(), true, $user->id);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // song
 
     /**
@@ -1216,7 +1242,7 @@ class Api
      *
      * @param array $input
      * filter = (string) UID of playlist
-     * @return false|null
+     * @return boolean
      */
     public static function playlist($input)
     {
@@ -1242,7 +1268,7 @@ class Api
                     echo XML_Data::error('401', T_('Access denied to this playlist'));
             }
 
-            return;
+            return false;
         }
         ob_end_clean();
         switch ($input['format']) {
@@ -1253,6 +1279,8 @@ class Api
                 echo XML_Data::playlists(array($uid));
         }
         Session::extend($input['auth']);
+
+        return true;
     } // playlist
 
     /**
@@ -1265,7 +1293,7 @@ class Api
      * filter = (string) UID of playlist
      * offset = (integer) //optional
      * limit  = (integer) //optional
-     * @return false|null
+     * @return boolean
      */
     public static function playlist_songs($input)
     {
@@ -1291,7 +1319,7 @@ class Api
                     echo XML_Data::error('401', T_('Access denied to this playlist'));
             }
 
-            return;
+            return false;
         }
 
         $items = $playlist->get_items();
@@ -1315,6 +1343,8 @@ class Api
                 echo XML_Data::songs($songs, $items, true, $user->id);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // playlist_songs
 
     /**
@@ -1326,7 +1356,7 @@ class Api
      * @param array $input
      * name = (string) Alpha-numeric search term
      * type = (string) 'public'|'private'
-     * @return false|null
+     * @return boolean
      */
     public static function playlist_create($input)
     {
@@ -1349,6 +1379,8 @@ class Api
                 echo XML_Data::playlists(array($uid));
         }
         Session::extend($input['auth']);
+
+        return true;
     } // playlist_create
 
     /**
@@ -2794,7 +2826,7 @@ class Api
      * username = (string)
      * limit    = (integer) //optional
      * since    = (integer) UNIXTIME() //optional
-     * @return false|null
+     * @return boolean
      */
     public static function timeline($input)
     {
@@ -2826,6 +2858,8 @@ class Api
             debug_event('api.class', 'Sociable feature is not enabled.', 3);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // timeline
 
     /**
@@ -2891,7 +2925,7 @@ class Api
                     echo XML_Data::error('401', T_('Wrong item type ' . $type));
             }
 
-            return;
+            return false;
         }
         $item = new $type($object);
         if (!$item->id) {
@@ -2903,7 +2937,7 @@ class Api
                     echo XML_Data::error('404', T_('The requested item was not found'));
             }
 
-            return;
+            return false;
         }
         // update your object
         Catalog::update_single_item($type, $object, true);
@@ -2916,6 +2950,8 @@ class Api
                 echo XML_Data::success('Updated tags for: ' . (string) $object . ' (' . $type . ')');
         }
         Session::extend($input['auth']);
+
+        return true;
     } // update_from_tags
 
     /**
@@ -2948,7 +2984,7 @@ class Api
                     echo XML_Data::error('404', T_('The requested item was not found'));
             }
 
-            return;
+            return false;
         }
         // update your object
         // need at least catalog_manager access to the db
@@ -2961,7 +2997,7 @@ class Api
                     echo XML_Data::success('Updated artist info: ' . (string) $object);
             }
 
-            return;
+            return true;
         }
         switch ($input['format']) {
             case 'json':
@@ -2971,6 +3007,8 @@ class Api
                 echo XML_Data::error('400', T_('failed to update_artist_info or recommendations for ' . (string) $object));
         }
         Session::extend($input['auth']);
+
+        return true;
     } // update_artist_info
 
     /**
@@ -2984,7 +3022,7 @@ class Api
      * type      = (string) 'artist'|'album'
      * id        = (integer) $artist_id, $album_id)
      * overwrite = (boolean) 0|1 //optional
-     * @return bool|void
+     * @return boolean
      */
     public static function update_art($input)
     {
@@ -3008,7 +3046,7 @@ class Api
                     echo XML_Data::error('401', T_('Wrong item type ' . $type));
             }
 
-            return;
+            return true;
         }
         $item = new $type($object);
         if (!$item->id) {
@@ -3020,7 +3058,7 @@ class Api
                     echo XML_Data::error('404', T_('The requested item was not found'));
             }
 
-            return;
+            return true;
         }
         // update your object
         if (Catalog::gather_art_item($type, $object, $overwrite, true)) {
@@ -3032,7 +3070,7 @@ class Api
                     echo XML_Data::success('Gathered new art for: ' . (string) $object . ' (' . $type . ')');
             }
 
-            return;
+            return true;
         }
         switch ($input['format']) {
             case 'json':
@@ -3042,6 +3080,8 @@ class Api
                 echo XML_Data::error('400', T_('failed to update_art for ' . (string) $object));
         }
         Session::extend($input['auth']);
+
+        return true;
     } // update_art
 
     /**
@@ -3058,7 +3098,7 @@ class Api
      * format  = (string) 'mp3'|'ogg', etc use 'raw' to skip transcoding
      * offset  = (integer) time offset in seconds
      * length  = (boolean) 0|1
-     * @return false|null
+     * @return boolean
      */
     public static function stream($input)
     {
@@ -3109,6 +3149,8 @@ class Api
                 echo XML_Data::error('400', 'failed to create: ' . $url);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // stream
 
     /**
@@ -3121,7 +3163,7 @@ class Api
      * id     = (string) $song_id| $podcast_episode_id
      * type   = (string) 'song'|'podcast'
      * format = (string) 'mp3'|'ogg', etc //optional
-     * @return false|null
+     * @return boolean
      */
     public static function download($input)
     {
@@ -3161,6 +3203,8 @@ class Api
                 echo XML_Data::error('400', 'failed to create: ' . $url);
         }
         Session::extend($input['auth']);
+
+        return true;
     } // download
 
     /**

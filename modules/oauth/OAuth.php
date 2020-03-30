@@ -856,13 +856,8 @@ class OAuthServer
      */
     private function get_token($request, $consumer, $token_type="access")
     {
-        $token_field = $request instanceof OAuthRequest
-         ? $request->get_parameter('oauth_token')
-         : null;
-
-        $token = $this->data_store->lookup_token(
-      $consumer, $token_type, $token_field
-    );
+        $token_field = $request instanceof OAuthRequest ? $request->get_parameter('oauth_token') : null;
+        $token = $this->data_store->lookup_token($consumer, $token_type, $token_field);
         if (!$token) {
             throw new OAuthException("Invalid $token_type token: $token_field");
         }

@@ -415,7 +415,6 @@ class Core
      * https://bugs.php.net/bug.php?id=49620
      *
      * @param string $path
-     * @param $path
      * @return boolean
      */
     public static function is_readable($path)

@@ -69,7 +69,7 @@ class TVShow_Episode extends Video
      * @param array $data
      * @param array $gtypes
      * @param array $options
-     * @return
+     * @return integer
      */
     public static function insert(array $data, $gtypes = array(), $options = array())
     {
@@ -111,7 +111,7 @@ class TVShow_Episode extends Video
      * create
      * This takes a key'd array of data as input and inserts a new tv show episode entry, it returns the record id
      * @param array $data
-     * @return
+     * @return integer
      */
     public static function create($data)
     {

@@ -1705,6 +1705,7 @@ abstract class Catalog extends database_object
      * @param array $results
      * @param Song $song
      * @return array
+     * @throws ReflectionException
      */
     public static function update_song_from_tags($results, Song $song)
     {
