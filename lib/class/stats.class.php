@@ -199,17 +199,13 @@ class Stats
      */
     public static function get_object_count($object_type, $object_id, $threshold = null, $count_type = 'stream')
     {
-        if ($threshold === null || $threshold === '')
-        {
+        if ($threshold === null || $threshold === '') {
             $threshold = 0;
         }
 
-        if (AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE'))
-        {
+        if (AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE')) {
             $sql = "SELECT `count` AS `object_cnt` FROM `cache_object_count` WHERE `object_type`= ? AND `object_id` = ? AND `count_type` = ? AND `threshold` = " . $threshold;
-        }
-        else
-        {
+        } else {
             $sql = "SELECT COUNT(*) AS `object_cnt` FROM `object_count` WHERE `object_type`= ? AND `object_id` = ? AND `count_type` = ?";
             if ($threshold > 0) {
                 $date = time() - (86400 * (int) $threshold);
@@ -218,7 +214,7 @@ class Stats
         }
 
         $db_results = Dba::read($sql, array($object_type, $object_id, $count_type));
-        $results = Dba::fetch_assoc($db_results);
+        $results    = Dba::fetch_assoc($db_results);
 
         return $results['object_cnt'];
     } // get_object_count
@@ -355,8 +351,7 @@ class Stats
         $type = self::validate_type($input_type);
         $sql  = "";
         /* If they don't pass one, then use the preference */
-        if ($threshold === null || $threshold === '')
-        {
+        if ($threshold === null || $threshold === '') {
             $threshold = AmpConfig::get('stats_threshold');
         }
         $allow_group_disks = (AmpConfig::get('album_group')) ? true : false;
@@ -364,8 +359,7 @@ class Stats
 
         if ($type == 'playlist') {
             $sql = "SELECT `id` as `id`, `last_update` FROM `playlist`";
-            if ($threshold > 0)
-            {
+            if ($threshold > 0) {
                 $sql .= " WHERE `last_update` >= '" . $date . "' ";
             }
             $sql .= " GROUP BY `id` ORDER BY `last_update` DESC ";
@@ -373,12 +367,9 @@ class Stats
 
             return $sql;
         }
-        if ($user_id === null && AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE'))
-        {
+        if ($user_id === null && AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE')) {
             $sql = "SELECT `object_id` as `id`, `count` FROM `cache_object_count` WHERE `object_type` = '" . $type . "' AND `count_type` = '" . $count_type . "' AND `threshold` = '" . $threshold . "'";
-        }
-        else
-        {
+        } else {
             /* Select Top objects counting by # of rows for you only */
             $sql = "SELECT MAX(`object_id`) as `id`, COUNT(*) AS `count`";
             // Add additional columns to use the select query as insert values directly
@@ -394,8 +385,7 @@ class Stats
                 $sql .= " WHERE `object_type` = '" . $type . "' AND `user` = " . $user_id;
             } else {
                 $sql .= " WHERE `object_type` = '" . $type . "' ";
-                if ($threshold > 0)
-                {
+                if ($threshold > 0) {
                     $sql .= "AND `date` >= '" . $date . "'";
                 }
             }
