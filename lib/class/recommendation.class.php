@@ -51,6 +51,8 @@ class Recommendation
     }
 
     /**
+     * query_lastfm
+     * 
      * @param string $url
      * @return SimpleXMLElement
      */
@@ -65,6 +67,8 @@ class Recommendation
     }
 
     /**
+     * album_search
+     * 
      * @param $artist
      * @param $album
      * @return SimpleXMLElement
@@ -73,6 +77,20 @@ class Recommendation
     {
         $api_key = AmpConfig::get('lastfm_api_key');
         $url     = 'http://ws.audioscrobbler.com/2.0/?method=album.getInfo&artist=' . urlencode($artist) . '&album=' . urlencode($album) . '&api_key=' . $api_key;
+
+        return self::query_lastfm($url);
+    }
+
+    /**
+     * artist_search
+     * 
+     * @param $artist
+     * @return SimpleXMLElement
+     */
+    public static function artist_search($artist)
+    {
+        $api_key = AmpConfig::get('lastfm_api_key');
+        $url     = 'http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=' . urlencode($artist) . '&api_key=' . $api_key;
 
         return self::query_lastfm($url);
     }

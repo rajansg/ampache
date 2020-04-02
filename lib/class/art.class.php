@@ -1629,8 +1629,9 @@ class Art extends database_object
 
     /**
      * gather_lastfm
-     * This returns the art from lastfm. It doesn't currently require an
-     * account but may in the future.
+     * 
+     * This returns the art from lastfm.
+     * Make sure to get your last.fm api key
      * @param int $limit
      * @param array $data
      * @return array
@@ -1641,19 +1642,29 @@ class Art extends database_object
             $limit = 5;
         }
 
-        $images = array();
+        $images  = array();
+        $xmldata = array();
 
-        if ($this->type != 'album' || empty($data['artist']) || empty($data['album'])) {
-            return $images;
-        }
+        // search last.fm api for the album
+        if ($this->type == 'album' || !empty($data['artist']) || !empty($data['album'])) {
+            try {
+                $xmldata = Recommendation::album_search($data['artist'], $data['album']);
 
-        try {
-            $xmldata = Recommendation::album_search($data['artist'], $data['album']);
-
-            if (!count($xmldata)) {
-                return array();
+            } catch (Exception $error) {
+                debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
             }
+        }
+        // search last.fm api for the artist
+        if ($this->type == 'artist' || !empty($data['artist'])) {
+            try {
+                $xmldata = Recommendation::album_search($data['artist'], $data['album']);
 
+            } catch (Exception $error) {
+                debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
+            }
+        }
+        // if you get a result keep going
+        if (count($xmldata)) {
             $xalbum = $xmldata->album;
             if (!$xalbum) {
                 return array();
@@ -1680,8 +1691,6 @@ class Art extends database_object
                     return $images;
                 }
             } // end foreach
-        } catch (Exception $error) {
-            debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
         }
 
         return $images;
