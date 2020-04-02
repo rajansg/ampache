@@ -1646,26 +1646,29 @@ class Art extends database_object
         $xmldata = array();
 
         // search last.fm api for the album
-        if ($data['artist'] && $data['album']) {
+        if ($this->type == 'album' || !empty($data['artist']) || !empty($data['album'])) {
             try {
                 $xmldata = Recommendation::album_search($data['artist'], $data['album']);
-                $xmlitem = $xmldata->album;
             } catch (Exception $error) {
                 debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
             }
         }
         // search last.fm api for the artist
-        if ($data['artist'] && !$data['album']) {
+        if ($this->type == 'artist' || !empty($data['artist'])) {
             try {
-                $xmldata = Recommendation::artist_search($data['artist']);
-                $xmlitem = $xmldata->artist;
+                $xmldata = Recommendation::album_search($data['artist'], $data['album']);
             } catch (Exception $error) {
                 debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
             }
         }
         // if you get a result keep going
-        if ($xmlitem) {
-            $coverart = (array) $xmlitem->image;
+        if (count($xmldata)) {
+            $xalbum = $xmldata->album;
+            if (!$xalbum) {
+                return array();
+            }
+
+            $coverart = (array) $xalbum->image;
             if (empty($coverart)) {
                 return array();
             }
