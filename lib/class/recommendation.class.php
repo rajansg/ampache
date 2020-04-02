@@ -52,7 +52,7 @@ class Recommendation
 
     /**
      * query_lastfm
-     * 
+     *
      * @param string $url
      * @return SimpleXMLElement
      */
@@ -68,7 +68,7 @@ class Recommendation
 
     /**
      * album_search
-     * 
+     *
      * @param $artist
      * @param $album
      * @return SimpleXMLElement
@@ -83,7 +83,7 @@ class Recommendation
 
     /**
      * artist_search
-     * 
+     *
      * @param $artist
      * @return SimpleXMLElement
      */
