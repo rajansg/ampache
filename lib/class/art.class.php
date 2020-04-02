@@ -1629,7 +1629,7 @@ class Art extends database_object
 
     /**
      * gather_lastfm
-     *
+     * 
      * This returns the art from lastfm.
      * Make sure to get your last.fm api key
      * @param int $limit
@@ -1649,6 +1649,7 @@ class Art extends database_object
         if ($this->type == 'album' || !empty($data['artist']) || !empty($data['album'])) {
             try {
                 $xmldata = Recommendation::album_search($data['artist'], $data['album']);
+
             } catch (Exception $error) {
                 debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
             }
@@ -1657,6 +1658,7 @@ class Art extends database_object
         if ($this->type == 'artist' || !empty($data['artist'])) {
             try {
                 $xmldata = Recommendation::album_search($data['artist'], $data['album']);
+
             } catch (Exception $error) {
                 debug_event('art.class', 'LastFM error: ' . $error->getMessage(), 3);
             }
