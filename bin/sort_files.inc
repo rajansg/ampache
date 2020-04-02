@@ -70,7 +70,7 @@ $catalogs = array();
 
 while ($row = Dba::fetch_row($db_results)) {
 
-    $catalog = Catalog::create_from_id($row['id']);
+    $catalog = Catalog::create_from_id($row[0]);
     /* HINT: Catalog Name */
     printf (T_('Starting Catalog: %s'), stripslashes($catalog->name));
     echo "\n";
