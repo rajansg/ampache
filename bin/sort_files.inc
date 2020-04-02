@@ -66,11 +66,9 @@ if ($test_mode) {
 $sql = "SELECT `id` FROM `catalog` WHERE `catalog_type`='local'";
 $db_results = Dba::read($sql);
 
-$catalogs = array();
+while ($row = Dba::fetch_assoc($db_results)) {
 
-while ($row = Dba::fetch_row($db_results)) {
-
-    $catalog = Catalog::create_from_id($row[0]);
+    $catalog = Catalog::create_from_id($row['id']);
     /* HINT: Catalog Name */
     printf (T_('Starting Catalog: %s'), stripslashes($catalog->name));
     echo "\n";
