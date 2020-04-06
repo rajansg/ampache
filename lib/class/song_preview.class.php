@@ -243,7 +243,7 @@ class Song_Preview extends database_object implements media, playable_item
     } // format
 
     /**
-     * @return mixed
+     * @return string
      */
     public function get_fullname()
     {
