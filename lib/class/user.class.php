@@ -1354,7 +1354,7 @@ class User extends database_object
 
     /**
      * get_user_validation
-     *if user exists before activation can be done.
+     * if user exists before activation can be done.
      * @param string $username
      * @return mixed
      */
