@@ -620,7 +620,7 @@ class Art extends database_object
             $path = self::get_dir_on_disk($type, $uid, $kind);
             if ($path !== false) {
                 self::delete_rec_dir($path);
-            } 
+            }
         }
     }
 
