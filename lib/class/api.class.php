@@ -1569,7 +1569,7 @@ class Api
                 if (!$playlist->has_item($track)) {
                     echo XML_Data::error('404', T_('Song not found in playlist'));
 
-                    return;
+                    return false;
                 }
                 $playlist->delete_song($track);
                 $playlist->regenerate_track_numbers();
@@ -1591,7 +1591,7 @@ class Api
                             echo XML_Data::error('404', T_('Track ID not found in playlist'));
                     }
 
-                    return;
+                    return false;
                 }
                 $playlist->delete_track_number($track);
                 $playlist->regenerate_track_numbers();
@@ -3254,7 +3254,7 @@ class Api
      * @param array $input
      * id   = (string) $object_id
      * type = (string) 'song'|'artist'|'album'|'playlist'|'search'|'podcast')
-     * @return bool|void
+     * @return bool
      */
     public static function get_art($input)
     {
@@ -3276,7 +3276,7 @@ class Api
                     echo XML_Data::error('401', T_('Wrong object type ' . $type));
             }
 
-            return;
+            return false;
         }
 
         $art = null;
@@ -3326,7 +3326,7 @@ class Api
                     header('Content-Length: ' . strlen((string) $thumb['thumb']));
                     echo $thumb['thumb'];
 
-                    return;
+                    return true;
                 }
             }
 
@@ -3335,6 +3335,8 @@ class Api
             echo $art->raw;
         }
         Session::extend($input['auth']);
+
+        return true;
     } // get_art
 
     /**

@@ -976,7 +976,7 @@ class Query
      * This saves the base sql statement we are going to use.
      * @param boolean $force
      * @param string $custom_base
-     * @return true
+     * @return boolean
      */
     private function set_base_sql($force = false, $custom_base = '')
     {
