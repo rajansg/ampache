@@ -278,7 +278,7 @@ class Podcast_Episode extends database_object implements media, library_item
      * update
      * This takes a key'd array of data and updates the current podcast episode
      * @param array $data
-     * @return null
+     * @return integer
      */
     public function update(array $data)
     {
