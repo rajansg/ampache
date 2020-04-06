@@ -1014,7 +1014,7 @@ class User extends database_object
      * @param string $username
      * @param string $fullname
      * @param string $email
-     * @param|string $website
+     * @param string $website
      * @param string $password
      * @param int $access
      * @param string $state

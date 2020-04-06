@@ -402,12 +402,12 @@ class Graph
      * @param string $zoom
      * @return array
      */
-    protected function get_geolocation_pts($user = 0, $object_type = null, $object_id = 0, $start_date = null, $end_date = null, $zoom = 'day')
+    protected function get_geolocation_pts($user = 0, $object_type = '', $object_id = 0, $start_date = null, $end_date = null, $zoom = 'day')
     {
         $pts = array();
 
         $where = $this->get_user_sql_where($user, $object_type, $object_id, $start_date, $end_date);
-        if ($object_type == null) {
+        if ($object_type === '') {
             $where .= " AND `object_type` IN ('song', 'video')";
         }
         $sql = "SELECT `geo_latitude`, `geo_longitude`, `geo_name`, MAX(`date`) AS `last_date`, COUNT(`id`) AS `hits` FROM `object_count` " .

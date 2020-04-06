@@ -788,6 +788,8 @@ class Query
         }
 
         $this->resort_objects();
+
+        return true;
     } // set_sort
 
     /**
@@ -974,7 +976,7 @@ class Query
      * This saves the base sql statement we are going to use.
      * @param boolean $force
      * @param string $custom_base
-     * @return boolean
+     * @return true
      */
     private function set_base_sql($force = false, $custom_base = '')
     {
@@ -1106,6 +1108,8 @@ class Query
         }
 
         $this->_state['base'] = $sql;
+
+        return true;
     } // set_base_sql
 
     /**

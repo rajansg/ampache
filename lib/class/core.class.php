@@ -351,8 +351,8 @@ class Core
      * This generates a cryptographically secure token.
      * Returns a token of the required bytes length, as a string. Returns false
      * if it could not generate a cryptographically secure token.
-     * @param int $length
-     * @return bool|string
+     * @param integer $length
+     * @return false|string
      * @throws Exception
      */
     public static function gen_secure_token($length)
