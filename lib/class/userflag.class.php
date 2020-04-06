@@ -85,7 +85,7 @@ class Userflag extends database_object
             } else {
                 $userflag = (int) ($userflags[$objectid]);
             }
-            parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, $userflag);
+            parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, array($userflag));
         }
 
         return true;
@@ -146,7 +146,7 @@ class Userflag extends database_object
             }
         }
 
-        parent::add_to_cache($key, $this->id, $flagged);
+        parent::add_to_cache($key, $this->id, array($flagged));
 
         return $flagged;
     }
@@ -195,7 +195,7 @@ class Userflag extends database_object
         }
         Dba::write($sql, $params);
 
-        parent::add_to_cache('userflag_' . $this->type . '_user' . $user_id, $this->id, $flagged);
+        parent::add_to_cache('userflag_' . $this->type . '_user' . $user_id, $this->id, array($flagged));
 
         // Forward flag to last.fm and Libre.fm (song only)
         if ($this->type == 'song') {
@@ -268,7 +268,7 @@ class Userflag extends database_object
                 Dba::write($sql, $params);
             }
 
-            parent::add_to_cache('userflag_album_user' . $user_id, $album_id, $flagged);
+            parent::add_to_cache('userflag_album_user' . $user_id, $album_id, array($flagged));
         }
 
         return true;
