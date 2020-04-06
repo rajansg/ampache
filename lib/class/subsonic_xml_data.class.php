@@ -713,8 +713,9 @@ class Subsonic_XML_Data
             $catalog_path    = rtrim((string) $result['path'], "/");
             $results['path'] = str_replace($catalog_path . "/", "", $file_Path);
 
-            return $results;
         }
+
+        return $results;
     }
 
     /**
