@@ -561,7 +561,7 @@ class Core
     }
 
     /**
-     * @param null $options
+     * @param $options
      * @return array
      */
     public static function requests_options($options = array())

@@ -52,8 +52,8 @@ function show_confirmation($title, $text, $next_url, $cancel = 0, $form_name = '
 
 /**
  * @param $action
- * @param null $catalogs
- * @param null $options
+ * @param $catalogs
+ * @param $options
  */
 function catalog_worker($action, $catalogs = null, $options = null)
 {

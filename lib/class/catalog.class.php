@@ -155,7 +155,7 @@ abstract class Catalog extends database_object
     abstract public function install();
 
     /**
-     * @param null $options
+     * @param $options
      * @return mixed
      */
     abstract public function add_to_catalog($options = null);
@@ -2585,7 +2585,7 @@ abstract class Catalog extends database_object
     /**
      * @param $action
      * @param $catalogs
-     * @param null $options
+     * @param $options
      */
     public static function process_action($action, $catalogs, $options = null)
     {

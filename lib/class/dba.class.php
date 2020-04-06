@@ -339,7 +339,7 @@ class Dba
 
     /**
      * _setup_dbh
-     * @param null|PDO $dbh
+     * @param|PDO $dbh
      * @param string $database
      * @return false|null
      */

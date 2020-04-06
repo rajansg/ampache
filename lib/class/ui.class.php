@@ -167,7 +167,7 @@ class UI
      *
      * First initialized with an array of two class names. Subsequent calls
      * reverse the array then return the first element.
-     * @param null|array $classes
+     * @param|array $classes
      * @return mixed
      */
     public static function flip_class($classes = null)

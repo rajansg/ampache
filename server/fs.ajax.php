@@ -109,7 +109,7 @@ class fs
      */
     public function lst($fs_id, $with_root = false)
     {
-        $dir = $this->path($fs_id);
+        $dir = (string) $this->path($fs_id);
         $lst = @scandir($dir);
         if (!$lst) {
             throw new Exception('Could not list path: ' . $dir);

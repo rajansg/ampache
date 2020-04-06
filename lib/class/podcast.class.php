@@ -225,7 +225,7 @@ class Podcast extends database_object implements library_item
     }
 
     /**
-     * @param null $filter_type
+     * @param $filter_type
      * @return array|mixed
      */
     public function get_medias($filter_type = null)
