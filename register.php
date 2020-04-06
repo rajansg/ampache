@@ -61,9 +61,9 @@ switch ($_REQUEST['action']) {
         $email          = (string) scrub_in(Core::get_post('email'));
         $pass1          = Core::get_post('password_1');
         $pass2          = Core::get_post('password_2');
-        $website        = scrub_in(Core::get_post('website'));
-        $state          = scrub_in(Core::get_post('state'));
-        $city           = scrub_in(Core::get_post('city'));
+        $website        = (string) scrub_in(Core::get_post('website'));
+        $state          = (string) scrub_in(Core::get_post('state'));
+        $city           = (string) scrub_in(Core::get_post('city'));
 
         if ($website === null) {
             $website = '';

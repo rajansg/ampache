@@ -298,7 +298,7 @@ function show_artist_select($name, $artist_id = 0, $allow_add = false, $song_id 
 
     $sql    = "SELECT `id`, `name`, `prefix` FROM `artist` ";
     $params = array();
-    if ($user_id) {
+    if ($user_id !== null) {
         $sql .= "WHERE `user` = ? ";
         $params[] = $user_id;
     }
