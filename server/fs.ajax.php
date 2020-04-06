@@ -61,7 +61,7 @@ class fs
 
     /**
      * @param string $fs_id
-     * @return false|string|string[]
+     * @return false|string
      * @throws Exception
      */
     protected function path($fs_id)

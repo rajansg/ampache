@@ -711,7 +711,7 @@ class vainfo
 
     /**
      * @param $string
-     * @return string|string[]|null
+     * @return string
      */
     private function trimAscii($string)
     {

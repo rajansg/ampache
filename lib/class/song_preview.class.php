@@ -349,8 +349,10 @@ class Song_Preview extends database_object implements media, playable_item
     }
 
     /**
+     * get_stream_types
+     * 
      * @param null $player
-     * @return array
+     * @return string[]
      */
     public function get_stream_types($player = null)
     {

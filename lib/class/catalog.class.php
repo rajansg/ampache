@@ -1357,7 +1357,7 @@ abstract class Catalog extends database_object
         if (!count($art_order)) {
             debug_event('catalog.class', 'art_order not set, self::gather_art aborting', 3);
 
-            return true;
+            return false;
         }
 
         // Prevent the script from timing out
@@ -1402,9 +1402,10 @@ abstract class Catalog extends database_object
                 }
             }
         }
-
         // One last time for good measure
         UI::update_text('count_art_' . $this->id, $search_count);
+
+        return true;
     }
 
     /**

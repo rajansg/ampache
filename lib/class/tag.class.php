@@ -523,12 +523,12 @@ class Tag extends database_object implements library_item
      * @param $tag_id
      * @param string $count
      * @param string $offset
-     * @return integer[]|false
+     * @return integer[]
      */
     public static function get_tag_objects($type, $tag_id, $count = '', $offset = '')
     {
         if (!Core::is_library_item($type)) {
-            return false;
+            return array();
         }
 
         $limit_sql = "";

@@ -378,7 +378,7 @@ class Core
      * false on error
      *
      * @param string $image_data
-     * @return array|boolean
+     * @return array
      */
     public static function image_dimensions($image_data)
     {
@@ -473,8 +473,8 @@ class Core
      * conv_lc_file
      *
      * Convert site charset filename to local charset filename for file operations
-     * @param $filename
-     * @return false|string
+     * @param string $filename
+     * @return string
      */
     public static function conv_lc_file($filename)
     {
@@ -562,14 +562,10 @@ class Core
 
     /**
      * @param null $options
-     * @return array|null
+     * @return array
      */
-    public static function requests_options($options = null)
+    public static function requests_options($options = array())
     {
-        if ($options === null) {
-            $options = array();
-        }
-
         if (!isset($options['proxy'])) {
             if (AmpConfig::get('proxy_host') && AmpConfig::get('proxy_port')) {
                 $proxy   = array();

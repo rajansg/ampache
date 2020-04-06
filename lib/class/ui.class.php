@@ -131,7 +131,7 @@ class UI
      * Removes characters that aren't valid in XML (which is a subset of valid
      * UTF-8, but close enough for our purposes.)
      * See http://www.w3.org/TR/2006/REC-xml-20060816/#charsets
-     * @param array $string
+     * @param string $string
      * @return string
      */
     public static function clean_utf8($string)
