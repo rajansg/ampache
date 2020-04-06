@@ -1009,7 +1009,7 @@ class Api
             return false;
         }
         $artists = Tag::get_tag_objects('artist', $input['filter']);
-        if ($artists) {
+        if (!empty($artists)) {
             $user = User::get_from_username(Session::username($input['auth']));
 
             ob_end_clean();
@@ -1048,7 +1048,7 @@ class Api
             return false;
         }
         $albums = Tag::get_tag_objects('album', $input['filter']);
-        if ($albums) {
+        if (!empty($albums)) {
             $user = User::get_from_username(Session::username($input['auth']));
             XML_Data::set_offset($input['offset']);
             XML_Data::set_limit($input['limit']);
@@ -1095,7 +1095,7 @@ class Api
         XML_Data::set_limit($input['limit']);
 
         ob_end_clean();
-        if ($songs) {
+        if (!empty($songs)) {
             switch ($input['format']) {
                 case 'json':
                     JSON_Data::set_offset($input['offset']);

@@ -744,7 +744,7 @@ abstract class Catalog extends database_object
     public static function count_medias($catalog_id = null)
     {
         $where_sql = $catalog_id ? 'WHERE `catalog` = ?' : '';
-        $params    = $catalog_id ? array($catalog_id) : null;
+        $params    = $catalog_id ? array($catalog_id) : array();
 
         $sql = 'SELECT COUNT(`id`), SUM(`time`), SUM(`size`) FROM `song` ' .
             $where_sql;
