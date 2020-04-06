@@ -189,7 +189,7 @@ class Podcast extends database_object implements library_item
 
     /**
      * get_fullname
-     * 
+     *
      * @return string
      */
     public function get_fullname()
