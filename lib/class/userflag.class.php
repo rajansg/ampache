@@ -81,9 +81,9 @@ class Userflag extends database_object
 
         foreach ($ids as $objectid) {
             if (!isset($userflags[$objectid])) {
-                $userflag = false;
+                $userflag = 0;
             } else {
-                $userflag = $userflags[$objectid];
+                $userflag = (int) ($userflags[$objectid]);
             }
             parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, array($userflag));
         }
@@ -130,7 +130,7 @@ class Userflag extends database_object
 
         $key = 'userflag_' . $this->type . '_user' . $user_id;
         if (parent::is_cached($key, $this->id)) {
-            return parent::get_from_cache($key, $this->id);
+            return (double) parent::get_from_cache($key, $this->id)[0];
         }
 
         $sql = "SELECT `id`, `date` FROM `user_flag` WHERE `user` = ? " .
