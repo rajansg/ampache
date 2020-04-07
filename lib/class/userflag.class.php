@@ -70,22 +70,19 @@ class Userflag extends database_object
         $userflags = array();
 
         $idlist = '(' . implode(',', $ids) . ')';
-        $sql    = "SELECT `object_id` FROM `user_flag` " .
+        $sql    = "SELECT `object_id`, `date` FROM `user_flag` " .
             "WHERE `user` = ? AND `object_id` IN $idlist " .
             "AND `object_type` = ?";
         $db_results = Dba::read($sql, array($user_id, $type));
 
         while ($row = Dba::fetch_assoc($db_results)) {
-            $userflags[$row['object_id']] = true;
+            $userflags[$row['object_id']] = $row['date'];
         }
 
         foreach ($ids as $objectid) {
-            if (!isset($userflags[$objectid])) {
-                $userflag = 0;
-            } else {
-                $userflag = (int) ($userflags[$objectid]);
+            if (isset($userflags[$objectid])) {
+                parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, array(1, $userflags[$objectid]));
             }
-            parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, array($userflag));
         }
 
         return true;
@@ -130,7 +127,7 @@ class Userflag extends database_object
 
         $key = 'userflag_' . $this->type . '_user' . $user_id;
         if (parent::is_cached($key, $this->id)) {
-            return (double) parent::get_from_cache($key, $this->id)[0];
+            return parent::get_from_cache($key, $this->id)[0];
         }
 
         $sql = "SELECT `id`, `date` FROM `user_flag` WHERE `user` = ? " .
