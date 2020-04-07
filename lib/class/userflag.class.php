@@ -130,11 +130,10 @@ class Userflag extends database_object
         $key = 'userflag_' . $this->type . '_user' . $user_id;
         if (parent::is_cached($key, $this->id)) {
             $object = parent::get_from_cache($key, $this->id);
-            if (empty($object)) {
-                debug_event('userflag.class', 'false cache: ' . $this->id, 5);
+            if (empty($object) || !$object[0]) {
                 return false;
             }
-            debug_event('userflag.class', 'found cache: ' . $this->id, 5);
+
             return $object;
         }
 
