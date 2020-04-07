@@ -82,6 +82,8 @@ class Userflag extends database_object
         foreach ($ids as $objectid) {
             if (isset($userflags[$objectid])) {
                 parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, array(1, $userflags[$objectid]));
+            } else {
+                parent::add_to_cache('userflag_' . $type . '_user' . $user_id, $objectid, array(false));
             }
         }
 
@@ -134,16 +136,15 @@ class Userflag extends database_object
             "AND `object_id` = ? AND `object_type` = ?";
         $db_results = Dba::read($sql, array($user_id, $this->id, $this->type));
 
-        $flagged = false;
+        $flagged = array(false);
         if ($row = Dba::fetch_assoc($db_results)) {
             if ($get_date) {
-                return array(true, $row['date']);
+                $flagged = array(1, $row['date']);
             } else {
-                $flagged = true;
+                $flagged = array(1);
             }
         }
-
-        parent::add_to_cache($key, $this->id, array($flagged));
+        parent::add_to_cache($key, $this->id, $flagged);
 
         return $flagged;
     }
@@ -182,17 +183,18 @@ class Userflag extends database_object
                 "`object_type` = ? AND " .
                 "`user` = ?";
             $params = array($this->id, $this->type, $user_id);
+            parent::add_to_cache('userflag_' . $this->type . '_user' . $user_id, $this->id, array(false));
         } else {
-            $sql = "REPLACE INTO `user_flag` " .
-            "(`object_id`, `object_type`, `user`, `date`) " .
-            "VALUES (?, ?, ?, ?)";
-            $params = array($this->id, $this->type, $user_id, time());
+            $date = time();
+            $sql  = "REPLACE INTO `user_flag` " .
+                "(`object_id`, `object_type`, `user`, `date`) " .
+                "VALUES (?, ?, ?, ?)";
+            $params = array($this->id, $this->type, $user_id, $date);
+            parent::add_to_cache('userflag_' . $this->type . '_user' . $user_id, $this->id, array(1, $date));
 
             Useractivity::post_activity($user_id, 'userflag', $this->type, $this->id);
         }
         Dba::write($sql, $params);
-
-        parent::add_to_cache('userflag_' . $this->type . '_user' . $user_id, $this->id, array($flagged));
 
         // Forward flag to last.fm and Libre.fm (song only)
         if ($this->type == 'song') {
