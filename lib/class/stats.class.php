@@ -358,10 +358,10 @@ class Stats
         }
         $allow_group_disks = (AmpConfig::get('album_group')) ? true : false;
         $date              = time() - (86400 * (int) $threshold);
-
-        
-        if ($user_id === null && AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE')) {
+        if ($type == 'playlist' && AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE')) {
             $sql = "SELECT `object_id` as `id`, `count` FROM `cache_object_count` WHERE `object_type` = '" . $type . "' AND `count_type` = '" . $count_type . "' AND `threshold` = '" . $threshold . "'";
+            
+            return sql;
         } elseif ($type == 'playlist') {
             $sql = "SELECT `id` as `id`, `last_update` FROM `playlist`";
             if ($threshold > 0) {
@@ -371,6 +371,9 @@ class Stats
             //debug_event('stats.class', 'get_top_sql ' . $sql, 5);
 
             return $sql;
+        }
+        if ($user_id === null && AmpConfig::get('cron_cache') && !defined('NO_CRON_CACHE')) {
+            $sql = "SELECT `object_id` as `id`, `count` FROM `cache_object_count` WHERE `object_type` = '" . $type . "' AND `count_type` = '" . $count_type . "' AND `threshold` = '" . $threshold . "'";
         } else {
             /* Select Top objects counting by # of rows for you only */
             $sql = "SELECT MAX(`object_id`) as `id`, COUNT(*) AS `count`";
