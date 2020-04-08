@@ -137,7 +137,7 @@ if (AmpConfig::get('memory_cache')) {
                 Userflag::build_cache('video', $videos, $user_id);
             }
             // useractivities
-            $user_activities = Useractivity::get_activities($user_id, 100,);
+            $user_activities = Useractivity::get_activities($user_id, 100);
             // playlists
             $user_playlist = Playlist::get_playlists(true, $user_id);
             foreach ($user_playlist as $playlist_id) {
