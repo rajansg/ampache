@@ -503,7 +503,7 @@ class Tag extends database_object implements library_item
         }
 
         $params = array($type);
-        $sql = "SELECT `tag_map`.`id`, `tag`.`name`, `tag_map`.`user` FROM `tag` " .
+        $sql    = "SELECT `tag_map`.`id`, `tag`.`name`, `tag_map`.`user` FROM `tag` " .
             "LEFT JOIN `tag_map` ON `tag_map`.`tag_id`=`tag`.`id` " .
             "WHERE `tag_map`.`object_type` = ?";
         if ($object_id !== null) {
