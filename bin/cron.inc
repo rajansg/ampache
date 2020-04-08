@@ -29,6 +29,9 @@ require_once $prefix . '/lib/init.php';
 
 ob_end_flush();
 
+if (!AmpConfig::get('cron_cache')) {
+    throw new Exception("\n * ENABLE 'Cache computed SQL data (eg. media hits stats) using a cron'\n * In Admin -> Server Config -> System -> Catalog\n");
+}
 debug_event('cron', 'started cron process', 3);
 
 /**
