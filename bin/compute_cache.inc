@@ -35,9 +35,11 @@ debug_event('compute_cache', 'started cache process', 3);
 $users        = User::get_valid_users();
 $thresholds   = [ 0, AmpConfig::get('stats_threshold'), AmpConfig::get('popular_threshold') ];
 $count_types  = [ 'stream', 'download' ];
-$object_types = [ 'album', 'artist', 'song', 'playlist', 'genre', 'catalog', 'live_stream', 'video', 'podcast_episode' ];
+// TODO fix playlist sql.
+$object_types = [ 'album', 'artist', 'song', 'genre', 'catalog', 'live_stream', 'video', 'podcast_episode' ];
 
 foreach ($users as $user_id) {
+    debug_event('compute_cache', 'started cache process for user ' . (string) $user_id, 3);
     foreach ($thresholds as $threshold) {
         foreach ($count_types as $count_type) {
             foreach ($object_types as $object_type) {
