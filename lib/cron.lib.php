@@ -30,7 +30,6 @@ function set_cron_date()
     $update_sql = "REPLACE INTO `update_info` " .
                   "SET `key`='$name', `value`=UNIX_TIMESTAMP()";
     Dba::write($update_sql);
-    
 } // set_cron_date
 
 /**
