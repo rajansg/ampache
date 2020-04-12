@@ -512,3 +512,19 @@ function get_web_path()
 
     return preg_replace('#(.*)/(\w+\.php)$#', '$1', $root);
 }
+
+/**
+ * check_datetime
+ * @return string
+ */
+function check_datetime($date, $time)
+{
+    try {
+        $date_string = date($date, $time);
+    } catch (Exception $error) {
+        debug_event('general.lib', "Error processing datetime: '$date': " . $error->getMessage(), 2);
+        $date_string = date('Y.m.d H:i', $time);
+    }
+
+    return $date_string;
+}
