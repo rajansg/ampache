@@ -359,12 +359,12 @@ class Podcast extends database_object implements library_item
             if ($xml === false) {
                 AmpError::add('feed', T_('Can not read the feed'));
             } else {
-                $title            = html_entity_decode($xml->channel->title);
+                $title            = html_entity_decode((string) $xml->channel->title);
                 $website          = $xml->channel->link;
-                $description      = html_entity_decode($xml->channel->description);
+                $description      = html_entity_decode((string) $xml->channel->description);
                 $language         = $xml->channel->language;
-                $copyright        = html_entity_decode($xml->channel->copyright);
-                $generator        = html_entity_decode($xml->channel->generator);
+                $copyright        = html_entity_decode((string) $xml->channel->copyright);
+                $generator        = html_entity_decode((string) $xml->channel->generator);
                 $lastbuilddatestr = $xml->channel->lastBuildDate;
                 if ($lastbuilddatestr) {
                     $lastbuilddate = strtotime($lastbuilddatestr);
