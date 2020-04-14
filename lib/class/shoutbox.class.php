@@ -285,7 +285,7 @@ class Shoutbox
     public function format()
     {
         $this->sticky = ($this->sticky == "0") ? 'No' : 'Yes';
-        $time_format  = AmpConfig::get('custom_datetime') ? (string) AmpConfig::get('custom_datetime') : 'm/d/Y - H:i:s';
+        $time_format  = AmpConfig::get('custom_datetime') ? (string) AmpConfig::get('custom_datetime') : 'm/d/Y H:i:s';
         $this->f_date = get_datetime($time_format, (int) $this->date);
         $this->f_text = preg_replace('/(\r\n|\n|\r)/', '<br />', $this->text);
 
