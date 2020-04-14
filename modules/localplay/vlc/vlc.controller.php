@@ -198,8 +198,8 @@ class AmpacheVlc extends localplay_controller
      */
     public function get_instance($instance = '')
     {
-        $instance   = $instance ? $instance : AmpConfig::get('vlc_active');
-        $sql        = "SELECT * FROM `localplay_vlc` WHERE `id` = ?";
+        $instance = $instance ? $instance : AmpConfig::get('vlc_active');
+        $sql      = "SELECT * FROM `localplay_vlc` WHERE `id` = ?";
         // if you only have one instance just default to that!
         if (!is_numeric($instance) && count(self::get_instances()) === 1) {
             $sql = "SELECT * FROM `localplay_vlc`";
