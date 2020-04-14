@@ -2488,7 +2488,7 @@ abstract class Catalog extends database_object
         } else {
             $sql = 'SELECT `id` FROM `song` ORDER BY `album`, `track`';
         }
-        $db_results = Dba::read($sql, $params);
+        $db_results      = Dba::read($sql, $params);
         $time_format     = AmpConfig::get('custom_datetime') ? (string) AmpConfig::get('custom_datetime') : "Y-m-d\TH:i:s\Z";
 
         switch ($type) {
