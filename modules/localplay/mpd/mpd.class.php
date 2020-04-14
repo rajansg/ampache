@@ -189,7 +189,7 @@ class mpd
         $this->host     = $server;
         $this->port     = $port;
         $this->password = $password;
-        debug_event('mpd.class', "Connecting to: " . $$server . ":" . $port, 5);
+        debug_event('mpd.class', "Connecting to: " . $server . ":" . $port, 5);
 
         if (is_callable($debug_callback)) {
             $this->_debug_callback = $debug_callback;
