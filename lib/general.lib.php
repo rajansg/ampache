@@ -514,17 +514,17 @@ function get_web_path()
 }
 
 /**
- * check_datetime
+ * get_datetime
+ * @param string $date
+ * @param integer $time
  * @return string
  */
-function check_datetime($date, $time)
+function get_datetime($date, $time)
 {
-    try {
-        $date_string = date($date, $time);
-    } catch (Exception $error) {
-        debug_event('general.lib', "Error processing datetime: '$date': " . $error->getMessage(), 2);
-        $date_string = date('Y.m.d H:i', $time);
+    if (empty($date)) {
+        $date = 'm/d/Y H:i';
     }
+    $date_string = date($date, $time);
 
     return $date_string;
 }
