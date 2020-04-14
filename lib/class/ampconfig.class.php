@@ -98,7 +98,7 @@ class AmpConfig
      *
      * This sets config values.
      * @param string $name
-     * @param $value
+     * @param mixed $value
      * @param boolean $clobber
      * @return boolean
      */
@@ -110,6 +110,7 @@ class AmpConfig
 
             return false;
         }
+        debug_event('ampconfig.class', "Set key $name to " . (string) $value, 5);
         self::$_global[$name] = $value;
 
         return true;
