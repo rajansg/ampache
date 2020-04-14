@@ -37,9 +37,6 @@ class AmpacheMpd extends localplay_controller
 
     /* Constructed variables */
     private $_mpd;
-    private $_host;
-    private $_port;
-    private $_pass;
 
     /**
      * Constructor
@@ -192,20 +189,15 @@ class AmpacheMpd extends localplay_controller
      * @param string $instance
      * @return array
      */
-    public function get_instance($instance = null)
+    public function get_instance($instance = '')
     {
         $instance = $instance ? $instance : AmpConfig::get('mpd_active');
         $instance = Dba::escape($instance);
-        debug_event('mdp.controller', 'Searching for: ' . (string) count(self::get_instance()), 5);
 
-        $sql         = "SELECT * FROM `localplay_mpd` WHERE `id`= ?";
-        $db_results  = Dba::query($sql, array((int) $instance));
-        $options     = Dba::fetch_assoc($db_results);
-        $this->_host = $options['host'];
-        $this->_port = $options['port'];
-        $this->_pass = $options['password'];
+        $sql        = "SELECT * FROM `localplay_mpd` WHERE `id`= ?";
+        $db_results = Dba::query($sql, array($instance));
 
-        return $options;
+        return Dba::fetch_assoc($db_results);
     } // get_instance
 
     /**
@@ -247,7 +239,7 @@ class AmpacheMpd extends localplay_controller
     /**
      * set_active_instance
      * This sets the specified instance as the 'active' one
-     * @param string $uid
+     * @param $uid
      * @param string $user_id
      * @return boolean
      */
@@ -260,8 +252,8 @@ class AmpacheMpd extends localplay_controller
 
         $user_id = $user_id ? $user_id : Core::get_global('user')->id;
 
-        Preference::update('mpd_active', $user_id, $uid);
-        AmpConfig::set('mpd_active', $uid, true);
+        Preference::update('mpd_active', $user_id, (int) ($uid));
+        AmpConfig::set('mpd_active', (int) ($uid), true);
 
         return true;
     } // set_active_instance
@@ -590,15 +582,12 @@ class AmpacheMpd extends localplay_controller
     public function connect()
     {
         // Look at the current instance and pull the options for said instance
-        self::get_instance();
-        $this->_mpd = new mpd($this->_host, $this->_port, $this->_pass, 'debug_event');
+        $options    = self::get_instance();
+        $this->_mpd = new mpd($options['host'], $options['port'], $options['password'], 'debug_event');
 
         if ($this->_mpd->connected) {
-            debug_event('mdp.controller', 'Connected: ' . $this->_host . ":" . $this->_port, 5);
-
             return true;
         }
-        debug_event('mdp.controller', 'FAILED TO CONNECT TO: ' . $this->_host . ":" . $this->_port, 3);
 
         return false;
     } // connect
