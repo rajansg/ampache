@@ -218,6 +218,10 @@ class AmpacheHttpq extends localplay_controller
         $instance = Dba::escape($instance);
 
         $sql        = "SELECT * FROM `localplay_httpq` WHERE `id` = ?";
+        // if you only have one instance just default to that!
+        if (!is_numeric($instance) && count(self::get_instances()) === 1) {
+            $sql = "SELECT * FROM `localplay_httpq`";
+        }
         $db_results = Dba::query($sql, array($instance));
 
         return Dba::fetch_assoc($db_results);
