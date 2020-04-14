@@ -524,7 +524,5 @@ function get_datetime($date, $time)
     if (empty($date)) {
         $date = 'm/d/Y H:i';
     }
-    $date_string = date($date, $time);
-
-    return $date_string;
+    return date($date, $time);
 }
